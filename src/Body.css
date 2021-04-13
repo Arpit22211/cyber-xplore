@@ -1,0 +1,99 @@
+.custom-file-upload {
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  display: flex;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: lightblue;
+  color: grey;
+  width: 80px;
+  font-weight: 300px;
+  margin-left: 15px;
+  font-size: 16px;
+}
+.custom-file-upload:hover {
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  display: flex;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  width: 80px;
+  font-weight: 300px;
+  margin-left: 15px;
+  font-size: 16px;
+}
+input {
+  border-radius: 50px;
+  height: 5vh;
+  width: 20vw;
+  outline-width: 0px;
+  text-align: center;
+}
+.butt {
+  margin-left: 2px;
+  border-radius: 50px;
+}
+
+.box {
+  margin: 1%;
+  padding: 1%;
+  border-bottom: 2px solid grey;
+}
+.box2 {
+  padding: 2.5%;
+  display: inline;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.repo_no {
+  font-size: 2.5rem;
+  color: darkgrey;
+}
+.no {
+  padding: 0.5%;
+  border-radius: 100px;
+  background-color: #007bff;
+  color: white;
+}
+.box2 > p {
+  font-size: 1.2vw;
+  color: brown;
+}
+.url:hover {
+  text-decoration: none;
+}
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 880px) {
+  .box2 > p {
+    font-size: 15px !important;
+  }
+  .box2 {
+    width: 100%;
+  }
+  input {
+    width: 300px;
+  }
+}
