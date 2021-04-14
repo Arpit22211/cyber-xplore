@@ -6,13 +6,16 @@ import "./Body.css";
 function Body() {
   const [input, setInput] = useState("");
   const [doms, setDoms] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchdata = async () => {
     try {
+      setLoading(true);
       await axios
         .get(`https://subbuster.cyberxplore.com/api/find?domain=${input}`)
         .then((response) => {
           setDoms(response.data.data);
+          setLoading(false);
         });
     } catch (err) {
       if (err.response.status === 500) {
@@ -73,8 +76,17 @@ function Body() {
           </table>
         </div>
       ) : (
-        <div className="d-flex justify-content-center m-0">
-          <img className="welcome m-0" src={image1} alt="hi" />
+        <div>
+          {loading === true ? (
+            <div className="d-flex justify-content-center">
+              <div className="loader"></div>
+              <h2>Loading..</h2>
+            </div>
+          ) : (
+            <div className="d-flex justify-content-center m-0">
+              <img className="welcome m-0" src={image1} alt="hi" />
+            </div>
+          )}
         </div>
       )}
     </div>
