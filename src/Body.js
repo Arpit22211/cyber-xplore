@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import image1 from "./images/employee.jpg";
 import "./Body.css";
 
 function Body() {
   const [input, setInput] = useState("");
   const [doms, setDoms] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://subbuster.cyberxplore.com/api/find?domain=lpu.in")
-      .then((response) => {
-        setDoms(response.data.data);
-      })
-      .catch(() => console.log("Promise rejected"));
-  }, []);
 
   const fetchdata = async () => {
     try {
@@ -52,36 +44,37 @@ function Body() {
         </button>
       </form>
       {doms.length !== 0 ? (
-        <div className="container-fit description-box">
-          {doms.slice(0, 30).map((dom, index) => (
-            <div key={index} className="d-flex flex-column box">
-              <p className="repo_no">
-                RESULT <span className="no">{index + 1}</span>
-              </p>
-              <div className="box2">
-                <p>User Id : {dom._id}</p>
-                <p>Updated-On : {dom.updatedon}</p>
-                <p>Domain : {dom.domain}</p>
-
-                <p>
-                  Sub-Domain :
-                  <a href={dom.subdomain} className="url">
-                    {dom.subdomain}
-                  </a>
-                </p>
-                <p>Status-Code : {dom.statuscode}</p>
-              </div>
-            </div>
-          ))}
+        <div className="table-responsive m-0">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">User Id</th>
+                <th scope="col">Updated_On</th>
+                <th scope="col">Domain</th>
+                <th scope="col">Sub-Domain</th>
+                <th scope="col">Status Code</th>
+              </tr>
+            </thead>
+            <tbody>
+              {doms.slice(0, 30).map((dom, index) => (
+                <tr key={dom._id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{dom._id}</td>
+                  <td>{dom.updatedon}</td>
+                  <td>{dom.domain}</td>
+                  <td>
+                    <a href={dom.subdomain}>{dom.subdomain}</a>
+                  </td>
+                  <td>{dom.statuscode}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
-        <div>
-          <div className="d-flex justify-content-center">
-            <div className="loader"></div>
-          </div>
-          <div className="d-flex justify-content-center">
-            <h2>Loading Please Wait....</h2>
-          </div>
+        <div className="d-flex justify-content-center m-0">
+          <img className="welcome m-0" src={image1} alt="hi" />
         </div>
       )}
     </div>
